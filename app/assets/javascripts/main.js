@@ -26,6 +26,8 @@ $(function () {
                 <p>${movie["title"]}</p>
                 <p>${movie["overview"]}</p>`;
             });
+
+
         }
 
         container.append(htmlString);
