@@ -12,7 +12,7 @@ $(function () {
     });
 
     function displayMoives(data) {
-        let container = $("#movies")
+        let container = $("#movies");
         let htmlString = "";
 
         container.empty();
@@ -22,9 +22,9 @@ $(function () {
             htmlString = `<div class="alert alert-danger text-center>" role="alert">No Data Found!</div>`;
         } else {
             data["results"].forEach(function (movie) {
-                htmlString += `<img src=${movie["poster_path"] == null ? "/assets/Image_Available.jpg" : imageUrl + "/" + movie["poster_path"]} />
-                <p>${movie["title"]}</p>
-                <p>${movie["overview"]}</p>`;
+                htmlString += `<img src=${movie["poster_path"] == null ? "/assets/your_default_image.png" : imageUrl + "/" + movie["poster_path"]} data-id="${movie['id']}" class = "movie_poster"/>
+                               <p>${movie["title"]}</p>
+                               <p>${movie["overview"]}</p>`;
             });
 
 
@@ -49,3 +49,19 @@ function getBaseImageUrl() {
     });
     return url;
 }
+
+$('#movies').on('click', 'img.movie_poster', function (e) {
+    e.preventDefault();
+
+    let id = $(e.target).data('id');
+
+    $.ajax({
+            url: 'https://api.themoviedb.org/3/movie/' + id + '?',
+            data: {
+                "api_key": "12ce4e2bef2c5b2385bff21967591bd8"
+            }
+        })
+        .done(function (data) {
+            console.log(data)
+        })
+});
