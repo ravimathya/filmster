@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_05_094027) do
+ActiveRecord::Schema.define(version: 2019_12_19_092310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.string "plot"
+    t.string "release_date"
+    t.boolean "released"
+    t.string "runtime"
+    t.string "popularity"
+    t.string "genre"
+    t.string "language"
+    t.string "budget"
+    t.string "average_vote"
+    t.string "vote_count"
+    t.string "poster"
+    t.string "homepage"
+    t.string "tmdb_id"
+    t.string "imdb_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tmdb_id"], name: "index_movies_on_tmdb_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "movie_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +61,6 @@ ActiveRecord::Schema.define(version: 2019_11_05_094027) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reviews", "movies"
+  add_foreign_key "reviews", "users"
 end
