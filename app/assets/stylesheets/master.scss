@@ -1,3 +1,53 @@
 body {
     font-family: 'Jomolhari', serif;
+    background-color: #FAFAFA;
+}
+
+nav {
+    border-bottom: 1px solid #DBDBDB;
+    background-color: #FFFFFF;
+}
+
+.navbar-default {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.navbar {
+    min-height: 78px;
+}
+
+.wrap {
+    padding: 0 0 45px;
+}
+
+.brand {
+    font-family: 'Satisfy', cursive;
+    font-size: 28px;
+    vertical-align: middle;
+}
+
+.head-size {
+    font-size: 28px;
+    vertical-align: middle;
+}
+
+.nav_links a {
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 15px;
+    color: #777;
+    text-decoration: none;
+}
+
+a:hover,
+a:link,
+a:focus,
+a:active {
+    text-decoration: none;
+}
+
+.nav_wrapper {
+    line-height: 78px;
 }
