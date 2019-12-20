@@ -22,9 +22,16 @@ $(function () {
             htmlString = `<div class="alert alert-danger text-center>" role="alert">No Data Found!</div>`;
         } else {
             data["results"].forEach(function (movie) {
-                htmlString += `<img src=${movie["poster_path"] == null ? "/assets/Image_Available.jpg" : imageUrl + "/" + movie["poster_path"]} data-id="${movie['id']}" class = "movie_poster"/>
-                               <p>${movie["title"]}</p>
-                               <p>${movie["overview"]}</p>`;
+                htmlString += ` <img src=${movie["poster_path"] == null ? "/assets/Image_Available.jpg" : imageUrl + "/" + movie["poster_path"]} data-id="${movie['id']}" class = "movie_poster"/>
+                                <p>${movie["title"]}</p>
+                                <p>${movie["overview"]}</p>
+                                <form id="rating-form" action="/reviews" method="POST">
+                                    <input type="hidden" name="authenticity_token" value=${window._token} />
+                                   <input type="hidden" name="tmdb_id" value=${movie["id"]} />
+                                   <textarea name= "review[comment]" class="form-control" placeholder="Your movie review"/>
+                                   <br />
+                                   <input type="submit" class="btn btn-success pull-right" />
+                                </form>`;
             });
 
 

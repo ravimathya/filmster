@@ -71,3 +71,8 @@ gem 'devise'
 
 # for carrierwave
 gem 'carrierwave'
+
+# for TMDB api
+gem 'themoviedb-api'
+
+gem 'pry-rails'

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, AvatarUploader
+  has_many :reviews, dependent: :destroy
 
   validates :username, presence: true
 end
