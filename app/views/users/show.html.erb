@@ -1,0 +1,10 @@
+<%= image_tag @user.avatar, class: 'prof-pic-lg' %>
+<h1 class="text-center"><%= @user.username %></h1>
+<p class="text-center lead"><%= @user.introduction %></p>
+
+<ul class="user-stats">
+    <li>
+        <div class="number-label">Reviews</div>
+        <div class="number-value"><%= @user.reviews.count %></div>
+    </li>
+</ul>

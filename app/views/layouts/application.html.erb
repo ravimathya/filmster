@@ -1,61 +1,46 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>Filmster</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
-  <link href="https://fonts.googleapis.com/css?family=Jomolhari&display=swap" rel="stylesheet">
-</head>
-
-<body>
-  <nav class="nav navbar navbar-expand-lg nav-wrapper navbar-default navbar-light bg-light">
-    <div class="container"><a class="navbar-brand brand .header-size" href="/">
-        <i class="fab fa-instagram"></i> <strong><span style="color: #4f4f4f;">Filmster</span></strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+  <head>
+    <title>Filmster</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+    <link href="https://fonts.googleapis.com/css?family=Jomolhari&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="nav navbar navbar-expand-lg nav-wrapper navbar-default navbar-light bg-light">
+      <div class="container"><a class="navbar-brand brand .header-size" href="/">
+          <i class="fab fa-instagram"></i> <strong><span style="color: #4f4f4f;">Filmster</span></strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse in navbar-collapse" arial-expanded="true" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto nav_links">
-          <% if user_signed_in? %>
-          <span class="nav_links pull-right"><%= link_to 'Edit Settings', edit_user_registration_path %></span>
-          <span
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse in navbar-collapse" arial-expanded="true" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto nav_links">
+            <% if user_signed_in? %>
+              <span class="nav_links pull-right nav_items"><%= link_to 'Comments', reviews_path %></span>
+              <span class="nav_links pull-right"><%= link_to 'Edit Settings', edit_user_registration_path %></span>
+              <span
             class="nav_links pull-right nav_items"><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></span>
-          <% else %>
-          <span class="nav_links pull-right nav_items"><%= link_to 'Sign Up', new_user_registration_path %></span>
-          <span class="nav_links pull-right nav_items"><%= link_to 'Log In', new_user_session_path %></span>
-          <% end %>
+            <% else %>
+              <span class="nav_links pull-right nav_items"><%= link_to 'Sign Up', new_user_registration_path %></span>
+              <span class="nav_links pull-right nav_items"><%= link_to 'Log In', new_user_session_path %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <%= yield %>
         </div>
       </div>
     </div>
-  </nav>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <%= yield %>
-      </div>
-    </div>
-  </div>
-</body>
-
-<!-- <%# <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Filmster</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Features</a>
-        <a class="nav-item nav-link" href="#"><%= link_to 'Edit Settings', edit_user_registration_path %></a>
-<a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-</div>
-</div>
-</nav> %> -->
-
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  </body>
 </html>
